@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  sonarr:
+    container_name: sonarr
+    image: linuxserver/sonarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+    volumes:
+      - /dev/rtc:/dev/rtc:ro
+      - /docker/sonarr:/config
+      - "${TV_DIR}:/tv"
+      - "${DOWNLOADS_DIR}:/downloads"
+    ports:
+      - 8989:8989
+    restart: unless-stopped
