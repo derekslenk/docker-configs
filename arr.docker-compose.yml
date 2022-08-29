@@ -30,3 +30,19 @@ services:
     ports:
       - 7878:7878
     restart: unless-stopped
+
+  nzbget:
+    image: linuxserver/nzbget
+    container_name: nzbget
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=America/Detroit
+    # network_mode: service:openvpn-client
+    volumes:
+      - "${CONFIG_DIR}/nzbget:/config"
+      - "${DOWNLOADS_DIR}:/downloads"
+      - /docker/intermediate:/intermediate
+    ports:
+      - 6789:6789
+    restart: unless-stopped
