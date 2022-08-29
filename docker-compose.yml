@@ -8,7 +8,7 @@ services:
       - PGID=${PGID}
     volumes:
       - /dev/rtc:/dev/rtc:ro
-      - /docker/sonarr:/config
+      - "${CONFIG_DIR}/sonarr:/config"
       - "${TV_DIR}:/tv"
       - "${DOWNLOADS_DIR}:/downloads"
     ports:
