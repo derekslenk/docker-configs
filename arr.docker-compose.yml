@@ -5,6 +5,20 @@ services:
     image: containrrr/watchtower
     volumes:
         - '/var/run/docker.sock:/var/run/docker.sock'
+        
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:develop
+    container_name: prowlarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=America/Detroit
+    volumes:
+      - "${CONFIG_DIR}/prowlarr:/config"
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+    
   sonarr:
     container_name: sonarr
     image: linuxserver/sonarr
@@ -19,7 +33,7 @@ services:
     ports:
       - 8989:8989
     restart: unless-stopped
-    
+   
   radarr:
     image: ghcr.io/linuxserver/radarr
     container_name: radarr
