@@ -65,3 +65,15 @@ services:
     ports:
       - 6789:6789
     restart: unless-stopped
+    
+  overseerr:
+    image: sctx/overseerr:latest
+    container_name: overseerr
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=America/Detroit
+    ports:
+      - 5055:5055
+    volumes:
+      - "${CONFIG_DIR}/overseerr/config:/app/config"
+    restart: unless-stopped
