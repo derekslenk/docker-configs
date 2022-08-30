@@ -1,11 +1,22 @@
 version: "3.7"
 services:
+
   watchtower:
     container_name: watchtower
     image: containrrr/watchtower
     volumes:
         - '/var/run/docker.sock:/var/run/docker.sock'
         
+  homarr:
+    container_name: homarr
+    image: ghcr.io/ajnart/homarr:latest
+    restart: unless-stopped
+    volumes:
+      - "${CONFIG_DIR}/homarr/configs:/app/data/configs"
+      - "${CONFIG_DIR}/homarr/icons:/app/public/icons"
+    ports:
+      - '7575:7575'
+
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:develop
     container_name: prowlarr
