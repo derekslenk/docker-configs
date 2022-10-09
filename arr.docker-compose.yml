@@ -89,3 +89,16 @@ services:
     volumes:
       - "${CONFIG_DIR}/overseerr/config:/app/config"
     restart: unless-stopped
+    
+  tautulli:
+    image: ghcr.io/tautulli/tautulli
+    container_name: tautulli
+    restart: unless-stopped
+    volumes:
+      - "${CONFIG_DIR}/tautulli:/config"
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=America/Detroit
+    ports:
+      - 8181:8181
