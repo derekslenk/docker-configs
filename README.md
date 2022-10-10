@@ -1,2 +1,2 @@
-# docker-arr
-Docker files for various ARR projects
+# Docker
+Slenk's docker configs
