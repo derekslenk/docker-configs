@@ -5,5 +5,5 @@ services:
     ports:
       - '9090:9090'
     volumes:
-      - '"${CONFIG_DIR}/prometheus:/etc/prometheus'
+      - "${CONFIG_DIR}/prometheus:/etc/prometheus"
    
