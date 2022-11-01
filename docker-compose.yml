@@ -6,18 +6,16 @@ services:
     volumes:
         - '/var/run/docker.sock:/var/run/docker.sock'
         
-  eclipse-mosquitto:
-    container_name: mosquitto
-    image: eclipse-mosquitto
-    environment:
-      - "PUID=${PUID}"
-      - "PGID=${PGID}"
+  emqx:
+    image: 'emqx/emqx:5.0.9'
+    container_name: emqx
     ports:
       - '1883:1883'
-      - '9001:9001'
-    volumes:
-      - "${LOCAL_DIR}/mosquitto:/mosquitto"
-      
+      - '8083:8083'
+      - '8084:8084'
+      - '8883:8883'
+      - '18083:18083'
+        
   prometheus:
     image: prom/prometheus
     ports:
