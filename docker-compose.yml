@@ -13,12 +13,12 @@ services:
       - '1883:1883'
       - '9001:9001'
     volumes:
-      - "${CONFIG_DIR}/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf"
+      - "${LOCAL_DIR}/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf"
       
   prometheus:
     image: prom/prometheus
     ports:
       - '9090:9090'
     volumes:
-      - "${CONFIG_DIR}/prometheus:/etc/prometheus"
+      - "${LOCAL_DIR}/prometheus:/etc/prometheus"
       
