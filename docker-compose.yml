@@ -13,7 +13,7 @@ services:
       - '1883:1883'
       - '9001:9001'
     volumes:
-      - "${CONFIG_DIR/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf"
+      - "${CONFIG_DIR}/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf"
       
   prometheus:
     image: prom/prometheus
@@ -22,4 +22,3 @@ services:
     volumes:
       - "${CONFIG_DIR}/prometheus:/etc/prometheus"
       
-   
