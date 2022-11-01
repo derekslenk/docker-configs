@@ -9,6 +9,9 @@ services:
   eclipse-mosquitto:
     container_name: mosquitto
     image: eclipse-mosquitto
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
     ports:
       - '1883:1883'
       - '9001:9001'
