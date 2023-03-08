@@ -62,20 +62,35 @@ services:
       - 7878:7878
     restart: unless-stopped
 
-  nzbget:
-    image: linuxserver/nzbget
-    container_name: nzbget
+#   nzbget:
+#     image: linuxserver/nzbget
+#     container_name: nzbget
+#     environment:
+#       - PUID=${PUID}
+#       - PGID=${PGID}
+#       - TZ=America/Detroit
+#     # network_mode: service:openvpn-client
+#     volumes:
+#       - "${CONFIG_DIR}/nzbget:/config"
+#       - "${DOWNLOADS_DIR}:/downloads"
+#       - /docker/intermediate:/intermediate
+#     ports:
+#       - 5678:6789
+#     restart: unless-stopped
+
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=America/Detroit
-    # network_mode: service:openvpn-client
     volumes:
-      - "${CONFIG_DIR}/nzbget:/config"
-      - "${DOWNLOADS_DIR}:/downloads"
-      - /docker/intermediate:/intermediate
+      - "${CONFIG_DIR}/sabnzbd/config:/config"
+      - "${DOWNLOADS_DIR}:/downloads" #optional
+      - /docker/intermediate:/incomplete-downloads #optional
     ports:
-      - 5678:6789
+      - 8080:8080
     restart: unless-stopped
     
   overseerr:
