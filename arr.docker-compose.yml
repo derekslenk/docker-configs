@@ -7,18 +7,6 @@ services:
     volumes:
         - '/var/run/docker.sock:/var/run/docker.sock'
         
-  homarr:
-    container_name: homarr
-    image: ghcr.io/ajnart/homarr:latest
-    restart: unless-stopped
-    volumes:
-      - "${CONFIG_DIR}/homarr/configs:/app/data/configs"
-      - "${CONFIG_DIR}/homarr/icons:/app/public/icons"
-      - /mnt/local-configs/homarr/data:/data
-      - /var/run/docker.sock:/var/run/docker.sock
-    ports:
-      - '7575:7575'
-
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:develop
     container_name: prowlarr
