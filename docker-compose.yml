@@ -6,16 +6,6 @@ services:
     volumes:
         - '/var/run/docker.sock:/var/run/docker.sock'
         
-  emqx:
-    image: 'emqx/emqx:5.0.9'
-    container_name: emqx
-    ports:
-      - '1883:1883'
-      - '8083:8083'
-      - '8084:8084'
-      - '8883:8883'
-      - '18083:18083'
-        
   prometheus:
     container_name: prometheus
     image: prom/prometheus
@@ -23,4 +13,6 @@ services:
       - '9090:9090'
     volumes:
       - "${LOCAL_DIR}/prometheus:/etc/prometheus"
+      - "${LOCAL_DIR}/prometheus/data:/prometheus"
+    restart: unless-stopped
       
