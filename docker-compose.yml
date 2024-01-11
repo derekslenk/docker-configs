@@ -11,6 +11,9 @@ services:
     image: prom/prometheus
     ports:
       - '9090:9090'
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
     volumes:
       - "${LOCAL_DIR}/prometheus:/etc/prometheus"
       - "${LOCAL_DIR}/prometheus/data:/prometheus"
