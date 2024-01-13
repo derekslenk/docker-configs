@@ -6,6 +6,7 @@ services:
     image: containrrr/watchtower
     volumes:
         - '/var/run/docker.sock:/var/run/docker.sock'
+    restart: unless-stopped
         
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:develop
@@ -106,3 +107,13 @@ services:
       - TZ=America/Detroit
     ports:
       - 8181:8181
+    restart: unless-stopped
+
+  influxarr:
+    image: influxdb:2.7.4
+    container_name: influxdb2
+    ports:
+      - 8086:8086
+    volumes:
+      - "${LOCAL_DIR}/influxdb2:/var/lib/influxdb2"
+    restart: unless-stopped
