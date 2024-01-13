@@ -98,7 +98,6 @@ services:
   tautulli:
     image: ghcr.io/tautulli/tautulli
     container_name: tautulli
-    restart: unless-stopped
     volumes:
       - "${CONFIG_DIR}/tautulli:/config"
     environment:
