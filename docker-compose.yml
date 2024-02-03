@@ -20,14 +20,14 @@ services:
       - "${LOCAL_DIR}/prometheus/data:/prometheus"
     restart: unless-stopped
 
-    wyze-bridge:
-      container_name: wyze-bridge
-      image: mrlt8/wyze-bridge
-      restart: unless-stopped
-      ports:
-          - 8554:8554
-          - 8888:8888
-          - 5000:5000
+  wyze-bridge:
+    container_name: wyze-bridge
+    image: mrlt8/wyze-bridge
+    restart: unless-stopped
+    ports:
+        - 8554:8554
+        - 8888:8888
+        - 5000:5000
       
       
   omada-controller:
