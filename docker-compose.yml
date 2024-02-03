@@ -5,6 +5,7 @@ services:
     image: containrrr/watchtower
     volumes:
         - '/var/run/docker.sock:/var/run/docker.sock'
+    restart: unless-stoppped
         
   prometheus:
     container_name: prometheus
@@ -18,6 +19,16 @@ services:
       - "${LOCAL_DIR}/prometheus:/etc/prometheus"
       - "${LOCAL_DIR}/prometheus/data:/prometheus"
     restart: unless-stopped
+
+    wyze-bridge:
+      container_name: wyze-bridge
+      image: mrlt8/wyze-bridge
+      restart: unless-stopped
+      ports:
+          - 8554:8554
+          - 8888:8888
+          - 5000:5000
+      
       
   omada-controller:
     container_name: omada-controller
