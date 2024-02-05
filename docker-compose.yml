@@ -22,7 +22,7 @@ services:
 
   wyze-bridge:
     container_name: wyze-bridge
-    image: mrlt8/wyze-bridge
+    image: mrlt8/wyze-bridge:nightly
     restart: unless-stopped
     ports:
         - 8554:8554
