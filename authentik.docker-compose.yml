@@ -19,6 +19,8 @@ services:
       POSTGRES_DB: ${PG_DB:-authentik}
     env_file:
       - stack.env
+    networks:
+      - swag
   redis:
     image: docker.io/library/redis:alpine
     command: --save 60 1 --loglevel warning
@@ -31,6 +33,8 @@ services:
       timeout: 3s
     volumes:
       - redis:/data
+    networks:
+      - swag
   server:
     image: ${AUTHENTIK_IMAGE:-ghcr.io/goauthentik/server}:${AUTHENTIK_TAG:-2023.10.7}
     restart: unless-stopped
@@ -52,6 +56,8 @@ services:
     depends_on:
       - postgresql
       - redis
+    networks:
+      - swag
   worker:
     image: ${AUTHENTIK_IMAGE:-ghcr.io/goauthentik/server}:${AUTHENTIK_TAG:-2023.10.7}
     restart: unless-stopped
@@ -79,9 +85,15 @@ services:
     depends_on:
       - postgresql
       - redis
+    networks:
+      - swag
 
 volumes:
   database:
     driver: local
   redis:
     driver: local
+networks:
+  swag:
+    name: swagnet
+    external: true
