@@ -18,7 +18,7 @@ services:
       POSTGRES_USER: ${PG_USER:-authentik}
       POSTGRES_DB: ${PG_DB:-authentik}
     env_file:
-      - /opt/authenktik/.env
+      - /opt/authentik/.env
   redis:
     image: docker.io/library/redis:alpine
     command: --save 60 1 --loglevel warning
@@ -42,8 +42,8 @@ services:
       AUTHENTIK_POSTGRESQL__NAME: ${PG_DB:-authentik}
       AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
     volumes:
-      - /opt/authenktik/media:/media
-      - /opt/authenktik/custom-templates:/templates
+      - /opt/authentik/media:/media
+      - /opt/authentik/custom-templates:/templates
     env_file:
       - .env
     ports:
@@ -71,11 +71,11 @@ services:
     #user: root
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /opt/authenktik/media:/media
-      - /opt/authenktik/certs:/certs
-      - /opt/authenktik/custom-templates:/templates
+      - /opt/authentik/media:/media
+      - /opt/authentik/certs:/certs
+      - /opt/authentik/custom-templates:/templates
     env_file:
-      - /opt/authenktik/.env
+      - /opt/authentik/.env
     depends_on:
       - postgresql
       - redis
