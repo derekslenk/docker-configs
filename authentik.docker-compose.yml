@@ -45,7 +45,7 @@ services:
       - /opt/authentik/media:/media
       - /opt/authentik/custom-templates:/templates
     env_file:
-      - .env
+      - /opt/authentik/.env
     ports:
       - "${COMPOSE_PORT_HTTP:-9000}:9000"
       - "${COMPOSE_PORT_HTTPS:-9443}:9443"
