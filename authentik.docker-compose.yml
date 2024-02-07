@@ -1,6 +1,6 @@
 ---
 version: "3.4"
-
+# from https://goauthentik.io/docs/installation/docker-compose
 services:
   postgresql:
     image: docker.io/library/postgres:12-alpine
