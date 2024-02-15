@@ -24,6 +24,10 @@ services:
     container_name: wyze-bridge
     image: mrlt8/wyze-bridge:nightly
     restart: unless-stopped
+    environment:
+      - QUALITY_BACKYARD_CAM=SD60
+      - QUALITY_SIDEWAY_CAM=SD60
+      - QUALITY=HD180
     ports:
         - 8554:8554
         - 8888:8888
