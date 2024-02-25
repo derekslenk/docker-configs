@@ -31,7 +31,6 @@ services:
       - QUALITY=HD180
       - "MQTT_HOST=${MQTT_HOST}"
       - "MQTT_AUTH=${MQTT_AUTH}"
-      - MQTT_TOPIC=home
       - MQTT_DTOPIC=homeassistant
     ports:
         - 8554:8554
