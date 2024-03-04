@@ -41,6 +41,6 @@ services:
     image: phntxx/dashboard:latest
     restart: unless-stopped
     volumes:
-      - "${LOCAL_DIR}:/app/data"
+      - "${LOCAL_DIR}/dashboard:/app/data"
     ports:
       - 8080:8080
