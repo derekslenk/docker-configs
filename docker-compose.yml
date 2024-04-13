@@ -22,13 +22,9 @@ services:
 
   wyze-bridge:
     container_name: wyze-bridge
-    image: mrlt8/wyze-bridge:nightly
+    image: mrlt8/wyze-bridge:dev
     restart: unless-stopped
     environment:
-      - QUALITY_BACKYARD_CAM=SD60
-      - QUALITY_SIDEWAY_CAM=SD60
-      - QUALITY_DRIVEWAY_CAM=SD60
-      - QUALITY=HD180
       - "MQTT_HOST=${MQTT_HOST}"
       - "MQTT_AUTH=${MQTT_AUTH}"
       - MQTT_DTOPIC=homeassistant
